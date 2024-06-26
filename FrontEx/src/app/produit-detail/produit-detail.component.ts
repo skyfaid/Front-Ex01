@@ -1,9 +1,9 @@
-// src/app/produit-detail/produit-detail.component.ts
+
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProduitService } from '../produit.service';
-import { Produit } from '../produit.model';
+import { Produit } from '../Model/produit.model';
 
 @Component({
   selector: 'app-produit-detail',

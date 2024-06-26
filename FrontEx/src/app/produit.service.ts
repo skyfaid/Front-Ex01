@@ -1,15 +1,16 @@
-// src/app/produit.service.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Produit } from './produit.model';
+import { Produit } from './Model/produit.model';
+import { Unite } from './Model/unite.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProduitService {
-  private apiUrl = 'http://localhost:8000/api/produits';
+  private apiUrl = '/api/produits'; 
+  private uniteUrl = '/api';
+
 
   constructor(private http: HttpClient) { }
 
@@ -31,5 +32,8 @@ export class ProduitService {
 
   deleteProduit(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  getAllUnites(): Observable<Unite[]> {
+    return this.http.get<Unite[]>(`${this.uniteUrl}/unites`);
   }
 }

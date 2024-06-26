@@ -1,10 +1,9 @@
-// src/app/produit-form/produit-form.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProduitService } from '../produit.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Produit } from '../produit.model';
+import { Produit } from '../Model/produit.model';
+import { Unite } from '../Model/unite.model';
 
 @Component({
   selector: 'app-produit-form',
@@ -15,6 +14,7 @@ export class ProduitFormComponent implements OnInit {
   produitForm: FormGroup;
   isEditMode = false;
   produitId: number | null = null;
+  unites: Unite[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -30,6 +30,7 @@ export class ProduitFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadUnites();
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditMode = true;
@@ -38,6 +39,12 @@ export class ProduitFormComponent implements OnInit {
         this.produitForm.patchValue(data);
       });
     }
+  }
+
+  loadUnites(): void {
+    this.produitService.getAllUnites().subscribe(data => {
+      this.unites = data;
+    });
   }
 
   onSubmit(): void {
@@ -50,5 +57,9 @@ export class ProduitFormComponent implements OnInit {
         this.router.navigate(['/produits']);
       });
     }
+  }
+
+  goBack(): void {
+    this.router.navigate(['/produits']); 
   }
 }

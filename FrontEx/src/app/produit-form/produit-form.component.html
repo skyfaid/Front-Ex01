@@ -1,1 +1,25 @@
-<p>produit-form works!</p>
+<div class="container mt-5">
+  <div class="d-flex align-items-center mb-3">
+    <button type="button" class="btn btn-primary mr-2" (click)="goBack()">
+      <span class="oi oi-arrow-left text-white"></span>
+    </button>
+    <h2 class="mb-0">{{ isEditMode ? 'Edit Produit' : 'Add Produit' }}</h2>
+  </div>
+  <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="produitlibelle">Libelle:</label>
+      <input type="text" class="form-control" id="produitlibelle" formControlName="produitlibelle">
+    </div>
+    <div class="form-group">
+      <label for="produitdescription">Description:</label>
+      <textarea class="form-control" id="produitdescription" formControlName="produitdescription"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="unitereference">Unite:</label>
+      <select class="form-control" id="unitereference" formControlName="unitereference">
+        <option *ngFor="let unite of unites" [value]="unite.unitereference">{{ unite.unitelibelle }}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Create' }}</button>
+  </form>
+</div>
