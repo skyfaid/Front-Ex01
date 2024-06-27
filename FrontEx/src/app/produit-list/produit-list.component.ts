@@ -32,8 +32,9 @@ export class ProduitListComponent implements OnInit {
   initializeDataTable(): void {
     $(document).ready(() => {
       $('#produitTable').DataTable({
-        dom: 'Bfrtip',
+        dom: '<"top"lfB>rt<"bottom"ip><"clear">', // Adjusted DOM structure to include top and bottom sections
         buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+        lengthMenu: [10, 25, 50, 100], // Define the options for entries per page
         language: {
           paginate: {
             first: 'Premier',
@@ -42,11 +43,11 @@ export class ProduitListComponent implements OnInit {
             last: 'Dernier'
           },
           emptyTable: 'Aucune donnée disponible dans le tableau',
-          info: 'Affichage de _START_ à _END_ sur _TOTAL_ entrées',
+          info: "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
           infoEmpty: "Affichage de l'élément 0 à 0 sur 0 éléments",
           infoFiltered: '(filtré de _MAX_ entrées au total)',
           lengthMenu: 'Afficher _MENU_ entrées',
-          search: 'Rechercher :',
+          search: 'Rechercher : ',
           zeroRecords: 'Aucun résultat trouvé'
         }
       });
@@ -63,5 +64,10 @@ export class ProduitListComponent implements OnInit {
       // After deletion, reload the list of produits
       this.loadProduits();
     });
+  }
+
+  // Method to handle changing entries per page
+  changeEntriesPerPage(value: number): void {
+    $('#produitTable').DataTable().page.len(value).draw();
   }
 }
