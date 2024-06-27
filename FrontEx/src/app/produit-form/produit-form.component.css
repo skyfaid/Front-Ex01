@@ -1,12 +1,11 @@
-.btn-primary {
-    background-color: #007bff;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
-  .btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-  }
-  
+.text-gray {
+  color: gray;
+}
+
+.text-blue {
+  color: #007bff; /* Use your preferred blue color */
+}
+
+.btn-cyan {
+  background-color: cyan;
+}

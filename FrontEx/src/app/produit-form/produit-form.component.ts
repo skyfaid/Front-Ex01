@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import Validators
 import { ProduitService } from '../produit.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Produit } from '../Model/produit.model';
@@ -23,8 +23,8 @@ export class ProduitFormComponent implements OnInit {
     private router: Router
   ) {
     this.produitForm = this.fb.group({
-      produitlibelle: [''],
-      produitdescription: [''],
+      produitlibelle: ['', [Validators.required, Validators.maxLength(100)]], // Add Validators
+      produitdescription: ['', Validators.maxLength(1000)], // Add Validators
       unitereference: [null]
     });
   }
