@@ -1,1 +1,17 @@
-<p>produit-detail works!</p>
+<div class="container mt-5" *ngIf="produit">
+    <h1>Détails du Produit</h1>
+    <dl class="row">
+      <dt class="col-sm-3">Référence</dt>
+      <dd class="col-sm-9">{{ produit.produitreference }}</dd>
+      
+      <dt class="col-sm-3">Libellé</dt>
+      <dd class="col-sm-9">{{ produit.produitlibelle }}</dd>
+      
+      <dt class="col-sm-3">Unité</dt>
+      <dd class="col-sm-9">{{ produit.unitelibelle }}</dd>
+      
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">{{ produit.produitdescription }}</dd>
+    </dl>
+  </div>
+  

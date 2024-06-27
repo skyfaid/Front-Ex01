@@ -1,5 +1,3 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProduitService } from '../produit.service';
@@ -19,9 +17,11 @@ export class ProduitDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id')!;
-    this.produitService.getProduit(id).subscribe(data => {
-      this.produit = data;
+    this.route.params.subscribe(params => {
+      const id = +params['id'];
+      this.produitService.getProduit(id).subscribe(data => {
+        this.produit = data;
+      });
     });
   }
 }

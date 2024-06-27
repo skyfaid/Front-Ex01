@@ -26,9 +26,11 @@
         <td>{{ produit.unitelibelle }}</td>
         <td>{{ produit.produitdescription }}</td>
         <td>
-          <button class="btn btn-info btn-sm mr-2" routerLink="/detail/{{ produit.produitreference }}">
-            <i class="fas fa-search"></i>
-          </button>
+          <!-- Adjusted routerLink to correctly pass produitreference as parameter -->
+<button class="btn btn-info btn-sm mr-2" [routerLink]="'/detail/' + produit.produitreference">
+  <i class="fas fa-search"></i>
+</button>
+
           <button class="btn btn-warning btn-sm mr-2" routerLink="/edit/{{ produit.produitreference }}">
             <i class="fas fa-edit"></i>
           </button>
