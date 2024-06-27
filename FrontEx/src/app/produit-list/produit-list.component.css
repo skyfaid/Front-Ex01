@@ -2,11 +2,19 @@
   width: 95%; /* Reduce width to make it smaller */
   margin: 0 auto; /* Center the table horizontally */
   padding: 0 10px; /* Add padding from left and right */
+  border-collapse: collapse; /* Ensure borders collapse properly */
+  border: 1px solid #ccc; /* Add border around the entire table */
 }
 
 .table-header {
   background-color: #fff; /* White background for table header */
   color: #000; /* Black text for table header */
+  border-bottom: 2px solid #ccc; /* Add bottom border for header */
+}
+
+#produitTable th, #produitTable td {
+  border: 1px solid #ccc; /* Add borders around each cell */
+  padding: 8px; /* Add padding inside cells */
 }
 
 #produitTable tbody tr:nth-of-type(odd) {
@@ -49,8 +57,6 @@
   color: white; /* Set all icon colors to white */
 }
 
-
-
 #produitTable th:nth-child(3),
 #produitTable td:nth-child(3) {
   width: 7%; /* Adjust width as needed */
@@ -58,13 +64,14 @@
 
 #produitTable th:nth-child(1),
 #produitTable td:nth-child(1) {
-  width: 3%; /* Adjust width as needed */
+  width: 4%; /* Adjust width as needed */
 }
 
 #produitTable th:nth-child(2),
 #produitTable td:nth-child(2) {
   width: 20%; /* Adjust width as needed */
 }
+
 #produitTable th:nth-child(5),
 #produitTable td:nth-child(5) {
   width: 10%; /* Opérations column */
