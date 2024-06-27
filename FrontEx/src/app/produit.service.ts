@@ -9,8 +9,7 @@ import { Unite } from './Model/unite.model';
 })
 export class ProduitService {
   private apiUrl = '/api/produits'; 
-  private uniteUrl = '/api';
-
+  private uniteUrl = '/api/unites';
 
   constructor(private http: HttpClient) { }
 
@@ -23,17 +22,18 @@ export class ProduitService {
   }
 
   createProduit(produit: Produit): Observable<Produit> {
-    return this.http.post<Produit>(this.apiUrl, produit);
+    return this.http.post<Produit>(`${this.apiUrl}/new`, produit);
   }
 
   updateProduit(id: number, produit: Produit): Observable<Produit> {
-    return this.http.put<Produit>(`${this.apiUrl}/${id}`, produit);
+    return this.http.put<Produit>(`${this.apiUrl}/${id}/edit`, produit);
   }
 
   deleteProduit(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}/delete`);
   }
+
   getAllUnites(): Observable<Unite[]> {
-    return this.http.get<Unite[]>(`${this.uniteUrl}/unites`);
+    return this.http.get<Unite[]>(this.uniteUrl);
   }
 }

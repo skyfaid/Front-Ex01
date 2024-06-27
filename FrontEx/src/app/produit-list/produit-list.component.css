@@ -1,5 +1,71 @@
-table thead th {
-    background-color: #212529;
-    color: #fff;
-  }
-  
+#produitTable {
+  width: 95%; /* Reduce width to make it smaller */
+  margin: 0 auto; /* Center the table horizontally */
+  padding: 0 10px; /* Add padding from left and right */
+}
+
+.table-header {
+  background-color: #fff; /* White background for table header */
+  color: #000; /* Black text for table header */
+}
+
+#produitTable tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 123, 255, 0.1); /* Adjust blue shade as needed */
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Blue color */
+  border-color: #007bff; /* Blue color */
+}
+
+.btn-success {
+  background-color: #28a745; /* Green color */
+  border-color: #28a745; /* Green color */
+}
+
+.btn-info {
+  background-color: #ffc107; /* Yellow color */
+  border-color: #ffc107; /* Yellow color */
+}
+
+.btn-warning {
+  background-color: #17a2b8; /* Cyan blue color */
+  border-color: #17a2b8; /* Cyan blue color */
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Red color */
+  border-color: #dc3545; /* Red color */
+}
+
+.btn i {
+  color: white; /* Set all icon colors to white */
+}
+
+
+
+#produitTable th:nth-child(3),
+#produitTable td:nth-child(3) {
+  width: 7%; /* Adjust width as needed */
+}
+
+#produitTable th:nth-child(1),
+#produitTable td:nth-child(1) {
+  width: 3%; /* Adjust width as needed */
+}
+
+#produitTable th:nth-child(2),
+#produitTable td:nth-child(2) {
+  width: 20%; /* Adjust width as needed */
+}
+#produitTable th:nth-child(5),
+#produitTable td:nth-child(5) {
+  width: 10%; /* Opérations column */
+}
