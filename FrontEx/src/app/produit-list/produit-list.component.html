@@ -19,20 +19,20 @@
 
       <!-- Réf Column -->
       <ng-container matColumnDef="produitreference">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Réf </th>
-        <td mat-cell *matCellDef="let element"> {{element.produitreference}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 50px;"> Réf </th>
+        <td mat-cell *matCellDef="let element" style="width: 50px;"> {{element.produitreference}} </td>
       </ng-container>
 
       <!-- Libellé Column -->
       <ng-container matColumnDef="produitlibelle">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Libellé </th>
-        <td mat-cell *matCellDef="let element"> {{element.produitlibelle}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 220px;"> Libellé </th>
+        <td mat-cell *matCellDef="let element" style="width: 220px;"> {{element.produitlibelle}} </td>
       </ng-container>
 
       <!-- Unité Column -->
       <ng-container matColumnDef="unitelibelle">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Unité </th>
-        <td mat-cell *matCellDef="let element"> {{element.unitelibelle}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 50px;"> Unité </th>
+        <td mat-cell *matCellDef="let element" style="width: 50px;"> {{element.unitelibelle}} </td>
       </ng-container>
 
       <!-- Description Column -->
@@ -43,7 +43,7 @@
 
       <!-- Actions Column -->
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Opérations </th>
+        <th mat-header-cell *matHeaderCellDef style="width: 200px;"> Opérations </th>
         <td mat-cell *matCellDef="let element">
           <div class="button-groupa">
             <button class="btn btn-info btn-sm mr-2" [routerLink]="'/detail/' + element.produitreference">
@@ -63,6 +63,6 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[2,10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
   </div>
 </div>
