@@ -1,14 +1,15 @@
 <div class="container mt-5">
   <div class="d-flex align-items-center mb-3">
     
-    <h2 class="mb-0" [ngClass]="{'text-gray': !isEditMode}">{{ isEditMode ? 'Modification d\'un Produit' : 'Ajout d\'un Produit' }}</h2>
+    <h2 class="mb-0" class="text-gray">{{ isEditMode ? 'Modification d\'un Produit' : 'Ajout d\'un Produit' }}</h2>
     <div class="button-group">
       <button class="btn btn-sm btn-primary mr-2" (click)="goBack()">
         <i class="fas fa-arrow-left"></i>
       </button>
-      <button class="btn btn-danger btn-sm" (click)="deleteProduit()">
+   <button *ngIf="isEditMode" class="btn btn-danger btn-sm" (click)="deleteProduit()">
         <i class="fas fa-trash"></i>
       </button>
+     
     </div>
   </div>
   <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
@@ -28,6 +29,6 @@
       <label for="produitdescription" class="detail-label">Description</label>
       <textarea class="form-control form-control-lg custom-textarea" id="produitdescription" formControlName="produitdescription" rows="5"></textarea>
     </div>
-    <button type="submit" class="btn btn-cyan text-white mt-3">valider</button>
+    <button type="submit" class="custom-valider">valider</button>
   </form>
 </div>

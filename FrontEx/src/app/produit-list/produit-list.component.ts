@@ -66,6 +66,7 @@ export class ProduitListComponent implements OnInit {
     });
   }
 
+  
   // Method to handle changing entries per page
   changeEntriesPerPage(value: number): void {
     $('#produitTable').DataTable().page.len(value).draw();
