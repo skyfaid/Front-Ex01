@@ -4,6 +4,22 @@
   border-radius: 5px;
 }
 
+.mat-elevation-z8 {
+  padding: 20px;
+}
+
+.table-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-field, .items-per-page-field {
+  width: 200px;
+  margin-left: 10px;
+}
+
 #produitTable {
   width: 95%; /* Reduce width to make it smaller */
   margin: 0 auto; /* Center the table horizontally */
@@ -28,13 +44,13 @@
 }
 
 .btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-    line-height: 1.5;
-    border-radius: 0.2rem;
-    width: 40px;
-    height: 36px;
-  }
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+  width: 40px;
+  height: 36px;
+}
 
 .btn-primary {
   background-color: #007bff; /* Blue color */
@@ -85,23 +101,21 @@
   width: 10%; /* Opérations column */
 }
 
-
 .button-group {
   display: flex;
   margin-bottom: 20px;
-  
   align-items: center;
 }
+
 .button-group button {
   margin-right: 5px; /* Adjust the spacing between buttons */
 }
+
 .button-groupa button {
   margin-right: 5px; /* Adjust the spacing between buttons */
 }
 
 .button-groupa {
   display: flex;
- 
-  
   align-items: center;
 }

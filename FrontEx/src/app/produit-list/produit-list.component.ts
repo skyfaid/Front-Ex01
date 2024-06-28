@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ProduitService } from '../produit.service';
 import { Produit } from '../Model/produit.model';
-
-declare var $: any;
 
 @Component({
   selector: 'app-produit-list',
@@ -11,7 +12,11 @@ declare var $: any;
   styleUrls: ['./produit-list.component.css']
 })
 export class ProduitListComponent implements OnInit {
-  produits: Produit[] = [];
+  displayedColumns: string[] = ['produitreference', 'produitlibelle', 'unitelibelle', 'produitdescription', 'actions'];
+  dataSource: MatTableDataSource<Produit> = new MatTableDataSource();
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private produitService: ProduitService,
@@ -20,38 +25,23 @@ export class ProduitListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProduits();
-    this.initializeDataTable();
   }
 
   loadProduits(): void {
     this.produitService.getProduits().subscribe(data => {
-      this.produits = data;
+      this.dataSource.data = data;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
-  initializeDataTable(): void {
-    $(document).ready(() => {
-      $('#produitTable').DataTable({
-        dom: '<"top"lfB>rt<"bottom"ip><"clear">', // Adjusted DOM structure to include top and bottom sections
-        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-        lengthMenu: [10, 25, 50, 100], 
-        language: {
-          paginate: {
-            first: 'Premier',
-            previous: '<i class="fas fa-arrow-left"></i>',
-            next: '<i class="fas fa-arrow-right"></i>',
-            last: 'Dernier'
-          },
-         
-          info: "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
-        
-          infoFiltered: '(filtré de _MAX_ entrées au total)',
-          lengthMenu: 'Afficher _MENU_ éléments',
-          search: 'Rechercher : ',
-          zeroRecords: 'Aucun résultat trouvé'
-        }
-      });
-    });
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   editProduit(id: number): void {
@@ -59,14 +49,8 @@ export class ProduitListComponent implements OnInit {
   }
 
   deleteProduit(id: number): void {
-    
     this.produitService.deleteProduit(id).subscribe(() => {
       this.loadProduits();
     });
-  }
-
-  
-  changeEntriesPerPage(value: number): void {
-    $('#produitTable').DataTable().page.len(value).draw();
   }
 }
