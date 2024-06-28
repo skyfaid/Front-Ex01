@@ -38,13 +38,13 @@ export class ProduitListComponent implements OnInit {
         language: {
           paginate: {
             first: 'Premier',
-            previous: 'Précédent',
-            next: 'Suivant',
+            previous: '<i class="fas fa-arrow-left"></i>',
+            next: '<i class="fas fa-arrow-right"></i>',
             last: 'Dernier'
           },
-          emptyTable: 'Aucune donnée disponible dans le tableau',
+         
           info: "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
-          infoEmpty: "Affichage de l'élément 0 à 0 sur 0 éléments",
+        
           infoFiltered: '(filtré de _MAX_ entrées au total)',
           lengthMenu: 'Afficher _MENU_ entrées',
           search: 'Rechercher : ',

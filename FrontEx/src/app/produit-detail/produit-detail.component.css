@@ -1,0 +1,113 @@
+.container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+h1 {
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.btn-icon {
+    border: none;
+    font-size: 0.75rem;
+    margin-right: 10px;
+
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+.detail-value {
+    flex: 1;
+    color: gray; /* Set text color to gray */
+  }
+  
+
+
+.btn-icon i {
+    margin-right: 0;
+}
+
+.back-button {
+    background-color: blue;
+}
+
+.back-button:hover {
+    background-color: darkblue;
+}
+
+.edit-button {
+    background-color: cyan;
+}
+
+.edit-button:hover {
+    background-color: darkcyan;
+}
+
+.delete-button {
+    background-color: red;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.detail-container {
+    margin-top: 20px;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.detail-label {
+    font-weight: bold;
+    width: 150px;
+    color: blue;
+}
+
+.detail-value {
+    flex: 1;
+}
+
+.button-group {
+    display: flex;
+    margin-bottom: 20px;
+    
+    align-items: center;
+}
+.button-group button {
+    margin-right: 5px; /* Adjust the spacing between buttons */
+  }
+
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    width: 40px;
+    height: 36px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff; /* Blue color */
+    border-color: #007bff; /* Blue color */
+  }
+  
+  .btn-warning {
+    background-color: #17a2b8; /* Cyan blue color */
+    border-color: #17a2b8; /* Cyan blue color */
+  }
+  
+  .btn-danger {
+    background-color: #dc3545; /* Red color */
+    border-color: #dc3545; /* Red color */
+  }
+  
+  .btn i {
+    color: white;
+}

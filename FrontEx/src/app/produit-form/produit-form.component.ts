@@ -25,7 +25,7 @@ export class ProduitFormComponent implements OnInit {
     this.produitForm = this.fb.group({
       produitlibelle: ['', [Validators.required, Validators.maxLength(100)]], // Add Validators
       produitdescription: ['', Validators.maxLength(1000)], // Add Validators
-      unitereference: [null]
+      
     });
   }
 
@@ -61,5 +61,8 @@ export class ProduitFormComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/produits']); 
+  }
+  deleteProduit(): void {
+    // Implement delete functionality
   }
 }

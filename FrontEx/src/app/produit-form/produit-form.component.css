@@ -9,3 +9,66 @@
 .btn-cyan {
   background-color: cyan;
 }
+
+.detail-value {
+  flex: 1;
+}
+
+
+.form-group{
+  display: flex;
+    margin-bottom: 10px;
+}
+
+.container {
+
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.button-group {
+  display: flex;
+  margin-bottom: 20px;
+  
+  align-items: center;
+}
+.button-group button {
+  margin-right: 5px; /* Adjust the spacing between buttons */
+}
+
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+  width: 36px;
+  height: 32px;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Blue color */
+  border-color: #007bff; /* Blue color */
+}
+
+
+.btn-danger {
+  background-color: #dc3545; /* Red color */
+  border-color: #dc3545; /* Red color */
+}
+
+.btn i {
+  color: white;
+}
+
+.detail-label {
+  
+  width: 100px;
+  color: blue;
+}
+
+.custom-textarea {
+  width: 600px; /* Set the width as needed */
+  height: 150px; /* Set the height as needed */
+  resize: none;
+}

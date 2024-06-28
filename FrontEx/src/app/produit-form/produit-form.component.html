@@ -1,38 +1,33 @@
 <div class="container mt-5">
   <div class="d-flex align-items-center mb-3">
-    <button type="button" class="btn btn-primary mr-2" (click)="goBack()">
-      <span class="oi oi-arrow-left text-white"></span>
-    </button>
-    <h2 class="mb-0 text-gray">{{ isEditMode ? 'Edit Produit' : 'Ajout d\'un Produit' }}</h2>
+    
+    <h2 class="mb-0" [ngClass]="{'text-gray': !isEditMode}">{{ isEditMode ? 'Modification d\'un Produit' : 'Ajout d\'un Produit' }}</h2>
+    <div class="button-group">
+      <button class="btn btn-sm btn-primary mr-2" (click)="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <button class="btn btn-danger btn-sm" (click)="deleteProduit()">
+        <i class="fas fa-trash"></i>
+      </button>
+    </div>
   </div>
   <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
-    <div class="form-group d-flex">
-      <div class="flex-grow-1">
-        <label for="produitlibelle" class="text-blue">Libellé:</label>
-        <input type="text" class="form-control form-control-lg" id="produitlibelle" formControlName="produitlibelle">
-        <!-- Validation message for Libellé -->
-        <div *ngIf="produitForm.get('produitlibelle').invalid && (produitForm.get('produitlibelle').dirty || produitForm.get('produitlibelle').touched)"
-             class="text-danger">
-          <div *ngIf="produitForm.get('produitlibelle').errors?.required">Libellé est requis.</div>
-          <div *ngIf="produitForm.get('produitlibelle').errors?.maxlength">Libellé ne doit pas dépasser 100 caractères.</div>
-        </div>
+    <div class="form-group ">
+      <div class="form-group">
+        <label for="produitlibelle" class="detail-label">Libellé</label>
+        <input type="text" class="form-control form-control-lg " id="produitlibelle" formControlName="produitlibelle">
       </div>
-      <div class="ml-3">
-        <label for="unitereference" class="text-blue">Unité:</label>
-        <select class="form-control form-control-lg" id="unitereference" formControlName="unitereference">
+      <div class="form-group">
+        <label for="unitereference" class="detail-label" style="margin-left: 1rem;">Unité</label>
+        <select class="form-control form-control-lg" style="width: 200px;" id="unitereference" formControlName="unitereference">
           <option *ngFor="let unite of unites" [value]="unite.unitereference">{{ unite.unitelibelle }}</option>
         </select>
       </div>
     </div>
     <div class="form-group">
-      <label for="produitdescription" class="text-blue">Description:</label>
-      <textarea class="form-control form-control-lg" id="produitdescription" formControlName="produitdescription" rows="5"></textarea>
-      <!-- Validation message for Description -->
-      <div *ngIf="produitForm.get('produitdescription').invalid && (produitForm.get('produitdescription').dirty || produitForm.get('produitdescription').touched)"
-           class="text-danger">
-        <div *ngIf="produitForm.get('produitdescription').errors?.maxlength">Description ne doit pas dépasser 1000 caractères.</div>
-      </div>
+      <label for="produitdescription" class="detail-label">Description</label>
+      <textarea class="form-control form-control-lg custom-textarea" id="produitdescription" formControlName="produitdescription" rows="5"></textarea>
     </div>
-    <button type="submit" class="btn btn-cyan text-white mt-3">{{ isEditMode ? 'Update' : 'Valider' }}</button>
+    <button type="submit" class="btn btn-cyan text-white mt-3">valider</button>
   </form>
 </div>
