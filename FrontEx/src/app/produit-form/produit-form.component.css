@@ -20,6 +20,11 @@
     margin-bottom: 10px;
 }
 
+.form-groupa{
+  
+  margin-bottom: 10px;
+}
+
 .container {
 
   padding: 20px;
@@ -94,4 +99,9 @@ input {
   margin: 8px 0;
   box-sizing: border-box;
   
+}
+
+
+.has-error .text-danger {
+  color: red;
 }

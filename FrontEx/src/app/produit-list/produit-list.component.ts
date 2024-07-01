@@ -39,6 +39,7 @@ export class ProduitListComponent implements OnInit {
       this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      
     });
   }
 
@@ -69,7 +70,7 @@ export class ProduitListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.produitService.deleteProduit(id).subscribe(() => {
-          this.loadProduits(); // Reload produits after deletion
+          this.loadProduits(); 
         });
       }
     });

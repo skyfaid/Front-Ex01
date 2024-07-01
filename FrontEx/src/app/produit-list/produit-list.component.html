@@ -14,7 +14,7 @@
       <div class="toolbar-left">
         <span>Afficher </span>
         <mat-form-field style="width: 80px;" class="pageSize-field">
-          <mat-select [(value)]="pageSize" (selectionChange)="onPageSizeChange($event)">
+          <mat-select  [(value)]="pageSize" (selectionChange)="onPageSizeChange($event)">
             <mat-option *ngFor="let option of pageSizeOptions" [value]="option">
               {{ option }}
             </mat-option>
@@ -78,6 +78,6 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[]" ></mat-paginator>
   </div>
 </div>

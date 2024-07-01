@@ -13,37 +13,32 @@
   <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
     <div *ngIf="isEditMode" class="form-group">
       <label for="produitreference" class="detail-label">Réf.</label>
-      <input type="text" class="form-control form-control-lg" id="produitreference" formControlName="produitreference" [disabled]="true" [style.border]="isEditMode ? 'none' : ''" >
-    </div>
-    <div class="form-group ">
-      <div class="form-group">
-        <label for="produitlibelle" class="detail-label">Libellé</label>
-        <input type="text" class="form-control form-control-lg" style=" width: 300px;" id="produitlibelle" formControlName="produitlibelle">
-        <div *ngIf="produitForm.get('produitlibelle')?.touched && produitForm.get('produitlibelle')?.invalid"
-          class="text-danger">
-          {{ getFormControlErrors('produitlibelle') }}
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="unitereference" class="detail-label" style="margin-left: 50px;">Unité</label>
-        <select class="form-control form-control-lg " style="width: 300px; height: 40px;" id="unitereference" formControlName="unitereference">
-          <option *ngFor="let unite of unites" [value]="unite.unitereference" [selected]="unite.unitereference === produitForm.get('unitereference')?.value">
-            {{ unite.unitelibelle }}
-          </option>
-        </select>
-        
-        <div *ngIf="produitForm.get('unitereference')?.touched && produitForm.get('unitereference')?.invalid"
-          class="text-danger">
-          {{ getFormControlErrors('unitereference') }}
-        </div>
-      </div>
+      <input type="text" class="form-control form-control-lg" id="produitreference" formControlName="produitreference" [disabled]="true" [style.border]="isEditMode ? 'none' : ''">
     </div>
     <div class="form-group">
+    <div class="form-groupa" [class.has-error]="produitForm.get('produitlibelle')?.invalid && produitForm.get('produitlibelle')?.touched">
+      <label for="produitlibelle" class="detail-label">Libellé</label>
+      <input type="text" class="form-control form-control-lg" style="width: 300px;" id="produitlibelle" formControlName="produitlibelle">
+      <div *ngIf="produitForm.get('produitlibelle')?.touched && produitForm.get('produitlibelle')?.invalid" class="text-danger">
+        {{ getFormControlErrors('produitlibelle') }}
+      </div>
+    </div>
+    <div class="form-groupa" [class.has-error]="produitForm.get('unitereference')?.invalid && produitForm.get('unitereference')?.touched">
+      <label for="unitereference" class="detail-label" style="margin-left: 50px;">Unité</label>
+      <select class="form-control form-control-lg" style="width: 300px; height: 40px;" id="unitereference" formControlName="unitereference">
+        <option *ngFor="let unite of unites" [value]="unite.unitereference" [selected]="unite.unitereference === produitForm.get('unitereference')?.value">
+          {{ unite.unitelibelle }}
+        </option>
+      </select>
+      <div *ngIf="produitForm.get('unitereference')?.touched && produitForm.get('unitereference')?.invalid" class="text-danger">
+        {{ getFormControlErrors('unitereference') }}
+      </div>
+    </div>
+  </div>
+    <div class="form-group" [class.has-error]="produitForm.get('produitdescription')?.invalid && produitForm.get('produitdescription')?.touched">
       <label for="produitdescription" class="detail-label">Description</label>
-      <textarea class="form-control form-control-lg custom-textarea" id="produitdescription"
-        formControlName="produitdescription" rows="5"></textarea>
-      <div *ngIf="produitForm.get('produitdescription')?.touched && produitForm.get('produitdescription')?.invalid"
-        class="text-danger">
+      <textarea class="form-control form-control-lg custom-textarea" id="produitdescription" formControlName="produitdescription" rows="5"></textarea>
+      <div *ngIf="produitForm.get('produitdescription')?.touched && produitForm.get('produitdescription')?.invalid" class="text-danger">
         {{ getFormControlErrors('produitdescription') }}
       </div>
     </div>
