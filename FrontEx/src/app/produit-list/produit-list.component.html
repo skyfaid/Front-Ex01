@@ -10,11 +10,25 @@
   </div>
 
   <div class="mat-elevation-z8">
-    <mat-form-field class="search-field" >
-      
-      <mat-label>Rechercher</mat-label>
-      <input matInput (keyup)="applyFilter($event)" >
-    </mat-form-field>
+    <div class="paginator-toolbar">
+      <div class="toolbar-left">
+        <span>Afficher </span>
+        <mat-form-field style="width: 80px;" class="pageSize-field">
+          <mat-select [(value)]="pageSize" (selectionChange)="onPageSizeChange($event)">
+            <mat-option *ngFor="let option of pageSizeOptions" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <span> Éléments</span>
+      </div>
+      <div class="toolbar-right">
+        <span>Rechercher </span>
+        <mat-form-field class="search-field">
+          <input matInput (keyup)="applyFilter($event)">
+        </mat-form-field>
+      </div>
+    </div>
 
     <table mat-table [dataSource]="dataSource" class="mat-table table-striped table-bordered" matSort>
 
@@ -64,6 +78,6 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[2,10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[]"></mat-paginator>
   </div>
 </div>

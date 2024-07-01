@@ -17,7 +17,7 @@
 
 .search-field, .items-per-page-field {
   width: 200px;
-  margin-left: 10px;
+  margin-left: 1100px;
 }
 
 #produitTable {
@@ -118,4 +118,31 @@
 .button-groupa {
   display: flex;
   align-items: center;
+}
+
+
+.paginator-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Optional: Adjust margin as needed */
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+}
+.toolbar-right {
+  margin-left: 800px;
+  align-items: center;
+}
+
+.pageSize-field {
+  margin-left: 10px;
+  margin-right: 10px; /* Optional: Adjust spacing between elements */
+}
+
+.search-field {
+  width: 200;
+  margin-left: 10px; /* Optional: Adjust spacing between elements */
 }

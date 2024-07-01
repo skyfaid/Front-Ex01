@@ -17,6 +17,8 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 export class ProduitListComponent implements OnInit {
   displayedColumns: string[] = ['produitreference', 'produitlibelle', 'unitelibelle', 'produitdescription', 'actions'];
   dataSource: MatTableDataSource<Produit> = new MatTableDataSource();
+  pageSizeOptions: number[] = [3, 10, 25, 50, 100]; // Define your pageSizeOptions array
+  pageSize: number = 10;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -46,6 +48,11 @@ export class ProduitListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  onPageSizeChange(event: any): void {
+    this.paginator.pageSize = event.value;
+    this.loadProduits(); // Reload products with new page size
   }
 
   editProduit(id: number): void {
