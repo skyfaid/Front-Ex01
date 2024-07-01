@@ -23,8 +23,10 @@ export class ProduitFormComponent implements OnInit {
     private router: Router
   ) {
     this.produitForm = this.fb.group({
-      produitlibelle: ['', [Validators.required, Validators.maxLength(100)]], // Add Validators
-      produitdescription: ['', Validators.maxLength(1000)], // Add Validators
+      produitlibelle: ['', [Validators.required, Validators.maxLength(100)]], 
+      produitdescription: ['', Validators.maxLength(1000)], 
+      unitereference:['',Validators.required],
+      produitreference:['']
       
     });
   }
@@ -36,7 +38,10 @@ export class ProduitFormComponent implements OnInit {
       this.isEditMode = true;
       this.produitId = +id;
       this.produitService.getProduit(this.produitId).subscribe(data => {
+        console.log('Loaded Produit data:', data);
         this.produitForm.patchValue(data);
+        this.produitForm.get('unitereference')?.setValue(data.unitereference);
+        console.log('Form value after patch:', this.produitForm.value);
       });
     }
   }
@@ -47,7 +52,29 @@ export class ProduitFormComponent implements OnInit {
     });
   }
 
+  getFormControlErrors(controlName: string): string | null {
+    const control = this.produitForm.get(controlName);
+    if (control && control.errors) {
+      if (control.errors['required']) {
+        return 'This field is required';
+      } else if (control.errors['maxlength']) {
+        return `Maximum length is ${control.errors['maxlength'].requiredLength}`;
+      }
+    }
+    return null;
+  }
+  
+
   onSubmit(): void {
+    if (this.produitForm.invalid) {
+      // Highlight errors
+      for (const controlName in this.produitForm.controls) {
+        if (this.produitForm.controls.hasOwnProperty(controlName)) {
+          this.produitForm.controls[controlName].markAsTouched();
+        }
+      }
+      return;
+    }
     if (this.isEditMode && this.produitId) {
       this.produitService.updateProduit(this.produitId, this.produitForm.value).subscribe(() => {
         this.router.navigate(['/produits']);
@@ -58,11 +85,12 @@ export class ProduitFormComponent implements OnInit {
       });
     }
   }
+  
 
   goBack(): void {
     this.router.navigate(['/produits']); 
   }
   deleteProduit(): void {
-    // Implement delete functionality
+    
   }
 }

@@ -1,35 +1,48 @@
 <div class="container mt-5">
   <div class="d-flex align-items-center mb-3">
-    
     <h2 class="mb-0" class="text-gray">{{ isEditMode ? 'Modification d\'un Produit' : 'Ajout d\'un Produit' }}</h2>
     <div class="button-group">
       <button class="btn btn-sm btn-primary mr-2" (click)="goBack()">
         <i class="fas fa-arrow-left"></i>
       </button>
-   <button *ngIf="isEditMode" class="btn btn-danger btn-sm" (click)="deleteProduit()">
+      <button *ngIf="isEditMode" class="btn btn-danger btn-sm" (click)="deleteProduit()">
         <i class="fas fa-trash"></i>
       </button>
-     
     </div>
   </div>
   <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
-    
     <div class="form-group ">
       <div class="form-group">
         <label for="produitlibelle" class="detail-label">Libellé</label>
-        <input type="text" class="form-control form-control-lg " id="produitlibelle" formControlName="produitlibelle">
+        <input type="text" class="form-control form-control-lg" id="produitlibelle" formControlName="produitlibelle">
+        <div *ngIf="produitForm.get('produitlibelle')?.touched && produitForm.get('produitlibelle')?.invalid"
+          class="text-danger">
+          {{ getFormControlErrors('produitlibelle') }}
+        </div>
       </div>
       <div class="form-group">
         <label for="unitereference" class="detail-label" style="margin-left: 1rem;">Unité</label>
-        <select class="form-control form-control-lg" style="width: 200px;" id="unitereference" formControlName="unitereference">
-          <option *ngFor="let unite of unites" [value]="unite.unitereference">{{ unite.unitelibelle }}</option>
+        <select class="form-control form-control-lg detail-label" id="unitereference" formControlName="unitereference">
+          <option *ngFor="let unite of unites" [value]="unite.unitereference" [selected]="unite.unitereference === produitForm.get('unitereference')?.value">
+            {{ unite.unitelibelle }}
+          </option>
         </select>
+        
+        <div *ngIf="produitForm.get('unitereference')?.touched && produitForm.get('unitereference')?.invalid"
+          class="text-danger">
+          {{ getFormControlErrors('unitereference') }}
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="produitdescription" class="detail-label">Description</label>
-      <textarea class="form-control form-control-lg custom-textarea" id="produitdescription" formControlName="produitdescription" rows="5"></textarea>
+      <textarea class="form-control form-control-lg custom-textarea" id="produitdescription"
+        formControlName="produitdescription" rows="5"></textarea>
+      <div *ngIf="produitForm.get('produitdescription')?.touched && produitForm.get('produitdescription')?.invalid"
+        class="text-danger">
+        {{ getFormControlErrors('produitdescription') }}
+      </div>
     </div>
-    <button type="submit" class="custom-valider">valider</button>
+    <button type="submit" class="custom-valider">Valider</button>
   </form>
 </div>
