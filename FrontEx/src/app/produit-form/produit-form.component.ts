@@ -26,7 +26,7 @@ export class ProduitFormComponent implements OnInit {
       produitlibelle: ['', [Validators.required, Validators.maxLength(100)]], 
       produitdescription: ['', Validators.maxLength(1000)], 
       unitereference:['',Validators.required],
-      produitreference:['']
+      produitreference:[{ value: '', disabled: true }]
       
     });
   }

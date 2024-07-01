@@ -11,8 +11,11 @@
     </div>
   </div>
   <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="isEditMode" class="form-group">
+      <label for="produitreference" class="detail-label">Réf.</label>
+      <input type="text" class="form-control form-control-lg" id="produitreference" formControlName="produitreference" [disabled]="true" [style.border]="isEditMode ? 'none' : ''" >
+    </div>
     <div class="form-group ">
-      
       <div class="form-group">
         <label for="produitlibelle" class="detail-label">Libellé</label>
         <input type="text" class="form-control form-control-lg" id="produitlibelle" formControlName="produitlibelle">
