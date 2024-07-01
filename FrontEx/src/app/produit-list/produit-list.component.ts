@@ -5,6 +5,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProduitService } from '../produit.service';
 import { Produit } from '../Model/produit.model';
+import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component'; // Import ConfirmationDialogComponent
+
 
 @Component({
   selector: 'app-produit-list',
@@ -20,7 +23,8 @@ export class ProduitListComponent implements OnInit {
 
   constructor(
     private produitService: ProduitService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -49,8 +53,17 @@ export class ProduitListComponent implements OnInit {
   }
 
   deleteProduit(id: number): void {
-    this.produitService.deleteProduit(id).subscribe(() => {
-      this.loadProduits();
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: { message: 'Êtes-vous sûr de vouloir supprimer cet enregsitrement ?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.produitService.deleteProduit(id).subscribe(() => {
+          this.loadProduits(); // Reload produits after deletion
+        });
+      }
     });
   }
 }

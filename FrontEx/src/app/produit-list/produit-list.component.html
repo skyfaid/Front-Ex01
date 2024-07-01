@@ -11,8 +11,9 @@
 
   <div class="mat-elevation-z8">
     <mat-form-field class="search-field" >
+      
       <mat-label>Rechercher</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Rechercher dans les produits">
+      <input matInput (keyup)="applyFilter($event)" >
     </mat-form-field>
 
     <table mat-table [dataSource]="dataSource" class="mat-table table-striped table-bordered" matSort>
