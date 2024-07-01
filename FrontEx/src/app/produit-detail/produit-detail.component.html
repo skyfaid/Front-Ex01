@@ -6,10 +6,10 @@
       <button class="btn btn-sm btn-primary mr-2" (click)="goBack()">
         <i class="fas fa-arrow-left"></i>
       </button>
-      <button class="btn btn-warning btn-sm mr-2" (click)="editProduit()">
+      <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/produits/edit', produit.produitreference]">
         <i class="fas fa-edit"></i>
       </button>
-      <button class="btn btn-danger btn-sm" (click)="deleteProduit()">
+      <button class="btn btn-danger btn-sm" (click)="deleteProduit(produit.produitreference)">
         <i class="fas fa-trash"></i>
       </button>
     </div>

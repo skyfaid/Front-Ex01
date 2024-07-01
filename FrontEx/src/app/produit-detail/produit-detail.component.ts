@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProduitService } from '../produit.service';
 import { Produit } from '../Model/produit.model';
 import { Location } from '@angular/common';
-
+import { MatDialog } from '@angular/material/dialog'; 
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component'; 
 @Component({
   selector: 'app-produit-detail',
   templateUrl: './produit-detail.component.html',
@@ -14,6 +15,7 @@ export class ProduitDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private dialog: MatDialog,
     private produitService: ProduitService,
     private location: Location
   ) { }
@@ -31,11 +33,18 @@ export class ProduitDetailComponent implements OnInit {
     this.location.back();
   }
 
-  editProduit(): void {
-    // Implement edit functionality
-  }
+  deleteProduit(id: number): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: { message: 'Êtes-vous sûr de vouloir supprimer cet enregsitrement ?' }
+    });
 
-  deleteProduit(): void {
-    // Implement delete functionality
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.produitService.deleteProduit(id).subscribe(() => {
+          this.location.back();
+        });
+      }
+    });
   }
 }

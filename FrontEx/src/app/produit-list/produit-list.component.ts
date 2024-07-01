@@ -5,9 +5,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProduitService } from '../produit.service';
 import { Produit } from '../Model/produit.model';
-import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component'; // Import ConfirmationDialogComponent
-
+import { MatDialog } from '@angular/material/dialog'; 
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component'; 
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-produit-list',
@@ -17,7 +17,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 export class ProduitListComponent implements OnInit {
   displayedColumns: string[] = ['produitreference', 'produitlibelle', 'unitelibelle', 'produitdescription', 'actions'];
   dataSource: MatTableDataSource<Produit> = new MatTableDataSource();
-  pageSizeOptions: number[] = [3, 10, 25, 50, 100]; // Define your pageSizeOptions array
+  pageSizeOptions: number[] = [3, 10, 25, 50, 100]; 
   pageSize: number = 10;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -26,7 +26,8 @@ export class ProduitListComponent implements OnInit {
   constructor(
     private produitService: ProduitService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -72,5 +73,8 @@ export class ProduitListComponent implements OnInit {
         });
       }
     });
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

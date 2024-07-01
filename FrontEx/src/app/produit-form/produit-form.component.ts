@@ -4,6 +4,9 @@ import { ProduitService } from '../produit.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Produit } from '../Model/produit.model';
 import { Unite } from '../Model/unite.model';
+import { MatDialog } from '@angular/material/dialog'; 
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component'; 
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-produit-form',
@@ -20,7 +23,9 @@ export class ProduitFormComponent implements OnInit {
     private fb: FormBuilder,
     private produitService: ProduitService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
+    private location: Location
   ) {
     this.produitForm = this.fb.group({
       produitlibelle: ['', [Validators.required, Validators.maxLength(100)]], 
@@ -41,6 +46,7 @@ export class ProduitFormComponent implements OnInit {
         console.log('Loaded Produit data:', data);
         this.produitForm.patchValue(data);
         this.produitForm.get('unitereference')?.setValue(data.unitereference);
+      
         console.log('Form value after patch:', this.produitForm.value);
       });
     }
@@ -88,9 +94,20 @@ export class ProduitFormComponent implements OnInit {
   
 
   goBack(): void {
-    this.router.navigate(['/produits']); 
+    this.location.back();
   }
-  deleteProduit(): void {
-    
+  deleteProduit(id: number): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: { message: 'Êtes-vous sûr de vouloir supprimer cet enregsitrement ?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.produitService.deleteProduit(id).subscribe(() => {
+          this.location.back();
+        });
+      }
+    });
   }
 }
