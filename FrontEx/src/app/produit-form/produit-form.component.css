@@ -62,13 +62,14 @@
 }
 
 .detail-label {
-  
+  padding: 12px ;
   width: 100px;
   color: blue;
+
 }
 
 .custom-textarea {
-  width: 600px; /* Set the width as needed */
+  width: 770px; /* Set the width as needed */
   height: 150px; /* Set the height as needed */
   resize: none;
 }
@@ -85,4 +86,12 @@
   text-align: center;
   color: white;
   font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 12px 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  
 }

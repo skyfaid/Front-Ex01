@@ -18,15 +18,15 @@
     <div class="form-group ">
       <div class="form-group">
         <label for="produitlibelle" class="detail-label">Libellé</label>
-        <input type="text" class="form-control form-control-lg" id="produitlibelle" formControlName="produitlibelle">
+        <input type="text" class="form-control form-control-lg" style=" width: 300px;" id="produitlibelle" formControlName="produitlibelle">
         <div *ngIf="produitForm.get('produitlibelle')?.touched && produitForm.get('produitlibelle')?.invalid"
           class="text-danger">
           {{ getFormControlErrors('produitlibelle') }}
         </div>
       </div>
       <div class="form-group">
-        <label for="unitereference" class="detail-label" style="margin-left: 1rem;">Unité</label>
-        <select class="form-control form-control-lg detail-label" id="unitereference" formControlName="unitereference">
+        <label for="unitereference" class="detail-label" style="margin-left: 50px;">Unité</label>
+        <select class="form-control form-control-lg " style="width: 300px; height: 40px;" id="unitereference" formControlName="unitereference">
           <option *ngFor="let unite of unites" [value]="unite.unitereference" [selected]="unite.unitereference === produitForm.get('unitereference')?.value">
             {{ unite.unitelibelle }}
           </option>
